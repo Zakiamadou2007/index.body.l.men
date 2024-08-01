@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Store - Men</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+    body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo h1 {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.cart {
+    font-size: 1.5em;
+}
+
+.hero {
+    background-image: url(men/castelmezzano-1979546_1280.jpg);
+    color: #fff;
+    text-align: center;
+    padding: 150px 20px;
+}
+
+.hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hero h2 {
+    margin: 0;
+    font-size: 3em;
+    font-weight: 600;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.btn {
+    background-color: #60cdff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #31a2ff;
+}
+
+.products {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.products h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    font-weight: 600;
+    color: #333;
+}
+
+.product-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.item:hover {
+    transform: translateY(-10px);
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.item h3 {
+    font-size: 1.2em;
+    margin: 15px 0 10px;
+    font-weight: 600;
+}
+
+.item p {
+    color: #333;
+}
+
+.item .price {
+    color: #219bff;
+    font-weight: bold;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        width: 100%;
+        text-align: left;
+    }
+
+    .hero h2 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .item {
+        width: 100%;
+    }
+
+    .about h2,
+    .contact h2 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 100px 20px;
+    }
+
+    .hero h2 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 0.9em;
+    }
+
+    .btn {
+        padding: 8px 16px;
+    }
+
+    .products h2,
+    .about h2,
+    .contact h2 {
+        font-size: 1.8em;
+    }
+}
+
+
+        #cart-section {
+            margin-top: 50px;
+            padding: 20px;
+            border: 1px solid #00aeda;
+            border-radius: 10px;
+            background-color: #008ee0;
+        }
+        #cart-items {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-item h6 {
+            margin: 0;
+            flex: 1;
+        }
+        .cart-item .item-quantity {
+            width: 60px;
+            text-align: center;
+        }
+        .cart-item .item-remove {
+            color: rgb(66, 217, 255);
+            cursor: pointer;
+        }
+        .cart-total {
+            text-align: right;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Beauty Store</h1>
+        </div>
+    </header>
+
+    
+    <section id="products" class="products">
+        
+        <h2>Men's Products</h2>
+        <div class="product-list">
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="recherche un produit"> <!-- Correction de l'ID -->
+            <ul id="search-results"></ul>
+        </div>
+            
+            <!-- Dove Deeply Nourishing -->
+<div class="item">
+    <img src="men/body.l.men/Dove.original.nourishing.cream.jpg" alt="Dove Deeply Nourishing 750ML">
+    <h3>Dove Deeply Nourishing (0% Sulfate SLES, parabens, phthalates) 750ML</h3>
+    <p class="price">5000 CFA</p>
+    <p class="description">Une lotion nourrissante enrichie en agents hydratants pour une peau douce et lisse, sans sulfates, parabens ou phtalates.</p>
+    <p class="brand">Marque : Dove</p>
+    <button class="btn btn-primary add-to-cart" data-title="Dove Deeply Nourishing 750ML" data-price="5000">Ajouter au panier</button>
+</div>
+
+<!-- Dove Body Love Restoring Care Body Lotion for Dry Skin -->
+<div class="item">
+    <img src="men/body.l.men/Dove.body.love.RC.jpg" alt="Dove Body Love Restoring Care Body Lotion for Dry Skin 400ML">
+    <h3>Dove Body Love Restoring Care Body Lotion for Dry Skin 400ML</h3>
+    <p class="price">4000 CFA</p>
+    <p class="description">Une lotion pour le corps spécialement formulée pour les peaux sèches, offrant une hydratation intense et durable.</p>
+    <p class="brand">Marque : Dove</p>
+    <button class="btn btn-primary add-to-cart" data-title="Dove Body Love Restoring Care Body Lotion for Dry Skin 400ML" data-price="4000">Ajouter au panier</button>
+</div>
+
+<!-- Dove Body Love Essential Care Body Milk for Dry Skin -->
+<div class="item">
+    <img src="men/body.l.men/Dove.body.love.EC.jpg" alt="Dove Body Love Essential Care Body Milk for Dry Skin 400ML">
+    <h3>Dove Body Love Essential Care Body Milk for Dry Skin 400ML</h3>
+    <p class="price">4000 CFA</p>
+    <p class="description">Un lait pour le corps conçu pour les peaux sèches, procurant une hydratation essentielle et une douceur soyeuse.</p>
+    <p class="brand">Marque : Dove</p>
+    <button class="btn btn-primary add-to-cart" data-title="Dove Body Love Essential Care Body Milk for Dry Skin 400ML" data-price="4000">Ajouter au panier</button>
+</div>
+
+<!-- Imperial Leather Body Lotion for Men Sport Instant Cooling Sensation -->
+<div class="item">
+    <img src="men/body.l.men/Imperial.leather.men.sport.jpg" alt="Imperial Leather Body Lotion for Men Sport Instant Cooling Sensation 250ML">
+    <h3>Imperial Leather Body Lotion for Men Sport Instant Cooling Sensation 250ML</h3>
+    <p class="price">2500 CFA</p>
+    <p class="description">Une lotion pour le corps pour hommes, offrant une sensation de fraîcheur instantanée et une hydratation légère.</p>
+    <p class="brand">Marque : Imperial Leather</p>
+    <button class="btn btn-primary add-to-cart" data-title="Imperial Leather Body Lotion for Men Sport Instant Cooling Sensation 250ML" data-price="2500">Ajouter au panier</button>
+</div>
+
+<!-- Beauty Secrets Shea Butter (Classic) 100g -->
+<div class="item">
+    <img src="men/body.l.men/Beauty.secret.shea.butter.classic.jpg" alt="Beauty Secrets Shea Butter (Classic) 100g">
+    <h3>Beauty Secrets Shea Butter (Classic) 100g</h3>
+    <p class="price">2000 CFA</p>
+    <p class="description">Un beurre de karité pur et naturel, offrant une hydratation intense et une peau douce et nourrie.</p>
+    <p class="brand">Marque : Beauty Secrets</p>
+    <button class="btn btn-primary add-to-cart" data-title="Beauty Secrets Shea Butter (Classic) 100g" data-price="2000">Ajouter au panier</button>
+</div>
+
+<!-- Beauty Secrets Shea Butter (Classic) 200g -->
+<div class="item">
+    <img src="men/body.l.men/Beauty.secret.shea.butter.classic.jpg" alt="Beauty Secrets Shea Butter (Classic) 200g">
+    <h3>Beauty Secrets Shea Butter (Classic) 200g</h3>
+    <p class="price">3000 CFA</p>
+    <p class="description">Un beurre de karité pur et naturel, offrant une hydratation intense et une peau douce et nourrie.</p>
+    <p class="brand">Marque : Beauty Secrets</p>
+    <button class="btn btn-primary add-to-cart" data-title="Beauty Secrets Shea Butter (Classic) 200g" data-price="3000">Ajouter au panier</button>
+</div>
+
+    <!-- Dr Teal’s Body Lotion Rejuvenating Eucalyptus & Spearmint & Essential Oil -->
+    <div class="item">
+        <img src="men/body.l.men/Dr.teal's.body.l.eucalyptus.jpg" alt="Dr Teal’s Body Lotion Rejuvenating Eucalyptus & Spearmint & Essential Oil 532ML">
+        <h3>Dr Teal’s Body Lotion Rejuvenating Eucalyptus & Spearmint & Essential Oil 532ML</h3>
+        <p class="price">7000 CFA</p>
+        <p class="description">Une lotion pour le corps revitalisante, infusée d'eucalyptus, de menthe verte et d'huiles essentielles, pour une peau fraîche et hydratée.</p>
+        <p class="brand">Marque : Dr Teal’s</p>
+        <button class="btn btn-primary add-to-cart" data-title="Dr Teal’s Body Lotion Rejuvenating Eucalyptus & Spearmint & Essential Oil 532ML" data-price="7000">Ajouter au panier</button>
+    </div>
+
+    <!-- Dr Teal’s Body Lotion Soothing Lavender & Essential Oil -->
+    <div class="item">
+        <img src="men/body.l.men/Dr.teal's.body.l.lavender.jpg" alt="Dr Teal’s Body Lotion Soothing Lavender & Essential Oil 532ML">
+        <h3>Dr Teal’s Body Lotion Soothing Lavender & Essential Oil 532ML</h3>
+        <p class="price">7000 CFA</p>
+        <p class="description">Une lotion pour le corps apaisante, enrichie en lavande et huiles essentielles, pour une peau hydratée et apaisée.</p>
+        <p class="brand">Marque : Dr Teal’s</p>
+        <button class="btn btn-primary add-to-cart" data-title="Dr Teal’s Body Lotion Soothing Lavender & Essential Oil 532ML" data-price="7000">Ajouter au panier</button>
+    </div>
+
+<!-- Renew Derma Tissue Oil Hand & Nail Cream Vitamin A & E -->
+<div class="item">
+    <img src="men/body.l.men/Renew.derma.H1N.cream.jpg" alt="Renew Derma Tissue Oil Hand & Nail Cream Vitamin A & E 75ML">
+    <h3>Renew Derma Tissue Oil Hand & Nail Cream Vitamin A & E 75ML</h3>
+    <p class="price">2500 CFA</p>
+    <p class="description">Une crème pour les mains et les ongles enrichie en huile de tissu et en vitamines A & E, offrant une nutrition et une hydratation intenses.</p>
+    <p class="brand">Marque : Renew</p>
+    <button class="btn btn-primary add-to-cart" data-title="Renew Derma Tissue Oil Hand & Nail Cream Vitamin A & E 75ML" data-price="2500">Ajouter au panier</button>
+</div>
+
+<!-- Renew Derma Body Butter Tissue Oil -->
+<div class="item">
+    <img src="men/body.l.men/Renew.derma.body.butter.jpg" alt="Renew Derma Body Butter Tissue Oil 250ML">
+    <h3>Renew Derma Body Butter Tissue Oil 250ML</h3>
+    <p class="price">3000 CFA</p>
+    <p class="description">Un beurre corporel enrichi en huile de tissu, pour une hydratation intense et une peau soyeuse.</p>
+    <p class="brand">Marque : Renew</p>
+    <button class="btn btn-primary add-to-cart" data-title="Renew Derma Body Butter Tissue Oil 250ML" data-price="3000">Ajouter au panier</button>
+</div>
+
+<!-- Renew Family Nourishing Body Lotion Dry Skin -->
+<div class="item">
+    <img src="men/body.l.men/Renew.nourishing.dry.skin.jpg" alt="Renew Family Nourishing Body Lotion Dry Skin 400ML">
+    <h3>Renew Family Nourishing Body Lotion Dry Skin 400ML</h3>
+    <p class="price">2500 CFA</p>
+    <p class="description">Une lotion pour le corps nourrissante pour peau sèche, offrant une hydratation intense et une peau douce.</p>
+    <p class="brand">Marque : Renew</p>
+    <button class="btn btn-primary add-to-cart" data-title="Renew Family Nourishing Body Lotion Dry Skin 400ML" data-price="2500">Ajouter au panier</button>
+</div>
+
+<!-- Renew Family Moisturising Body Lotion Aloe Vera & Herbs -->
+<div class="item">
+    <img src="men/body.l.men/Renew.Family.Moisturising.Body.Lotion.Aloe.Vera.Herbs.jpg" alt="Renew Family Moisturising Body Lotion Aloe Vera & Herbs 400ML">
+    <h3>Renew Family Moisturising Body Lotion Aloe Vera & Herbs 400ML</h3>
+    <p class="price">2500 CFA</p>
+    <p class="description">Une lotion pour le corps hydratante à l'aloe vera et aux herbes, pour une peau apaisée et hydratée.</p>
+    <p class="brand">Marque : Renew</p>
+    <button class="btn btn-primary add-to-cart" data-title="Renew Family Moisturising Body Lotion Aloe Vera & Herbs 400ML" data-price="2500">Ajouter au panier</button>
+</div>
+
+<!-- Renew Everyday Care Men’s Body Lotion Fresh 24h -->
+<div class="item">
+    <img src="men/body.l.men/Renew.men's.fresh.jpg" alt="Renew Everyday Care Men’s Body Lotion Fresh 24h 400ML">
+    <h3>Renew Everyday Care Men’s Body Lotion Fresh 24h 400ML</h3>
+    <p class="price">2500 CFA</p>
+    <p class="description">Une lotion pour le corps pour homme, offrant une fraîcheur et une hydratation durables pendant 24 heures.</p>
+    <p class="brand">Marque : Renew</p>
+    <button class="btn btn-primary add-to-cart" data-title="Renew Everyday Care Men’s Body Lotion Fresh 24h 400ML" data-price="2500">Ajouter au panier</button>
+</div>
+
+<!-- Renew Everyday Care Men’s Body Cream 24h -->
+<div class="item">
+    <img src="men/body.l.men/Renew.men's.body.cream.jpg" alt="Renew Everyday Care Men’s Body Cream 24h 500ML">
+    <h3>Renew Everyday Care Men’s Body Cream 24h 500ML</h3>
+    <p class="price">3000 CFA</p>
+    <p class="description">Une crème pour le corps pour homme, offrant une hydratation et une protection durables pendant 24 heures.</p>
+    <p class="brand">Marque : Renew</p>
+    <button class="btn btn-primary add-to-cart" data-title="Renew Everyday Care Men’s Body Cream 24h 500ML" data-price="3000">Ajouter au panier</button>
+</div>
+
+<!-- Vaseline Intensive Care Dry Skin Repair with Pure Oat Extract 72h -->
+<div class="item">
+    <img src="men/body.l.men/vaseline.intensive.care.DS.jpg" alt="Vaseline Intensive Care Dry Skin Repair with Pure Oat Extract 72h 400ML">
+    <h3>Vaseline Intensive Care Dry Skin Repair with Pure Oat Extract 72h 400ML</h3>
+    <p class="price">2000 CFA</p>
+    <p class="description">Une lotion réparatrice pour peau sèche, enrichie en extrait d’avoine pure, offrant une hydratation intense pendant 72 heures.</p>
+    <p class="brand">Marque : Vaseline</p>
+    <button class="btn btn-primary add-to-cart" data-title="Vaseline Intensive Care Dry Skin Repair with Pure Oat Extract 72h 400ML" data-price="2000">Ajouter au panier</button>
+</div>
+
+<!-- Vaseline Intensive Care Aloe Soothe with Pure Aloe 48h -->
+<div class="item">
+    <img src="men/body.l.men/Vaseline.intensive.care.AS.jpg" alt="Vaseline Intensive Care Aloe Soothe with Pure Aloe 48h 400ML">
+    <h3>Vaseline Intensive Care Aloe Soothe with Pure Aloe 48h 400ML</h3>
+    <p class="price">2000 CFA</p>
+    <p class="description">Une lotion apaisante à l’aloe vera pur, offrant une hydratation et un apaisement pendant 48 heures.</p>
+    <p class="brand">Marque : Vaseline</p>
+    <button class="btn btn-primary add-to-cart" data-title="Vaseline Intensive Care Aloe Soothe with Pure Aloe 48h 400ML" data-price="2000">Ajouter au panier</button>
+</div>
+
+<!-- Vaseline Intensive Care Cocoa Glow with Pure Cocoa & Shea Butter 48h -->
+<div class="item">
+    <img src="men/body.l.men/vaseline.intensive.care.CG.jpg" alt="Vaseline Intensive Care Cocoa Glow with Pure Cocoa & Shea Butter 48h 400ML">
+    <h3>Vaseline Intensive Care Cocoa Glow with Pure Cocoa & Shea Butter 48h 400ML</h3>
+    <p class="price">2000 CFA</p>
+    <p class="description">Une lotion éclatante au cacao pur et beurre de karité, offrant une hydratation et un éclat pendant 48 heures.</p>
+    <p class="brand">Marque : Vaseline</p>
+    <button class="btn btn-primary add-to-cart" data-title="Vaseline Intensive Care Cocoa Glow with Pure Cocoa & Shea Butter 48h 400ML" data-price="2000">Ajouter au panier</button>
+</div>
+
+<!-- Vaseline Dry Skin Repair with Pure Oat Extract -->
+<div class="item">
+    <img src="men/body.l.men/Vaseline.dry.skin.repair.jpg" alt="Vaseline Dry Skin Repair with Pure Oat Extract 400ML">
+    <h3>Vaseline Dry Skin Repair with Pure Oat Extract 400ML</h3>
+    <p class="price">2000 CFA</p>
+    <p class="description">Une lotion réparatrice pour peau sèche, enrichie en extrait d’avoine pure, pour une hydratation intense.</p>
+    <p class="brand">Marque : Vaseline</p>
+    <button class="btn btn-primary add-to-cart" data-title="Vaseline Dry Skin Repair with Pure Oat Extract 400ML" data-price="2000">Ajouter au panier</button>
+</div>
+
+<!-- Vaseline Men Cooling 48h -->
+<div class="item">
+    <img src="men/body.l.men/Vaseline.men.cooling.jpg" alt="Vaseline Men Cooling 48h 400ML">
+    <h3>Vaseline Men Cooling 48h 400ML</h3>
+    <p class="price">2000 CFA</p>
+    <p class="description">Une lotion rafraîchissante pour homme, offrant une hydratation et un effet rafraîchissant pendant 48 heures.</p>
+    <p class="brand">Marque : Vaseline</p>
+    <button class="btn btn-primary add-to-cart" data-title="Vaseline Men Cooling 48h 400ML" data-price="2000">Ajouter au panier</button>
+</div>
+
+<!-- Nivea Body Lotion Irresistibly Smooth 48h -->
+<div class="item">
+    <img src="men/body.l.men/Nivea.irresistibly.smooth.jpg" alt="Nivea Body Lotion Irresistibly Smooth 48h 250ML">
+    <h3>Nivea Body Lotion Irresistibly Smooth 48h 250ML</h3>
+    <p class="price">2000 CFA</p>
+    <p class="description">Une lotion pour le corps irrésistiblement lisse, offrant une hydratation pendant 48 heures pour une peau douce et lisse.</p>
+    <p class="brand">Marque : Nivea</p>
+    <button class="btn btn-primary add-to-cart" data-title="Nivea Body Lotion Irresistibly Smooth 48h 250ML" data-price="2000">Ajouter au panier</button>
+</div>
+
+<!-- Nivea Body Milk Rich Nourishing 48h -->
+<div class="item">
+    <img src="men/body.l.men/Nivea.rich.nourishing.jpg" alt="Nivea Body Milk Rich Nourishing 48h 400ML">
+    <h3>Nivea Body Milk Rich Nourishing 48h 400ML</h3>
+    <p class="price">5500 CFA</p>
+    <p class="description">Un lait corporel riche et nourrissant, offrant une hydratation intensive pendant 48 heures avec un sérum hydratant profond.</p>
+    <p class="brand">Marque : Nivea</p>
+    <button class="btn btn-primary add-to-cart" data-title="Nivea Body Milk Rich Nourishing 48h 400ML" data-price="5500">Ajouter au panier</button>
+</div>
+
+<!-- Nivea Body Lotion Express Hydration 48h -->
+<div class="item">
+    <img src="men/body.l.men/Nivea.express.hydration.jpg" alt="Nivea Body Lotion Express Hydration 48h 400ML">
+    <h3>Nivea Body Lotion Express Hydration 48h 400ML</h3>
+    <p class="price">4500 CFA</p>
+    <p class="description">Une lotion pour le corps à hydratation rapide, offrant une hydratation pendant 48 heures avec un sérum hydratant profond.</p>
+    <p class="brand">Marque : Nivea</p>
+    <button class="btn btn-primary add-to-cart" data-title="Nivea Body Lotion Express Hydration 48h 400ML" data-price="4500">Ajouter au panier</button>
+</div>
+
+<!-- Nivea Cocoa Butter with Deep Nourishing Serum 48h -->
+<div class="item">
+    <img src="men/body.l.men/Nivea.cocoa.butter.deep.jpg" alt="Nivea Cocoa Butter with Deep Nourishing Serum 48h 454G">
+    <h3>Nivea Cocoa Butter with Deep Nourishing Serum 48h 454G</h3>
+    <p class="price">4500 CFA</p>
+    <p class="description">Une lotion au beurre de cacao, offrant une hydratation profonde pendant 48 heures avec un sérum nourrissant.</p>
+    <p class="brand">Marque : Nivea</p>
+    <button class="btn btn-primary add-to-cart" data-title="Nivea Cocoa Butter with Deep Nourishing Serum 48h 454G" data-price="4500">Ajouter au panier</button>
+</div>
+
+<!-- Nivea Perfect & Radiant Luminous Anti Dark Marks Day Cream SPF50 -->
+<div class="item">
+    <img src="men/body.l.men/Nivea.perfect&radiant.luminous.jpg" alt="Nivea Perfect & Radiant Luminous Anti Dark Marks Day Cream SPF50 40ML">
+    <h3>Nivea Perfect & Radiant Luminous Anti Dark Marks Day Cream SPF50 40ML</h3>
+    <p class="price">4500 CFA</p>
+    <p class="description">Une crème de jour anti-taches pour un teint parfait et lumineux, offrant une triple protection SPF50.</p>
+    <p class="brand">Marque : Nivea</p>
+    <button class="btn btn-primary add-to-cart" data-title="Nivea Perfect & Radiant Luminous Anti Dark Marks Day Cream SPF50 40ML" data-price="4500">Ajouter au panier</button>
+</div>
+
+<!-- Nivea Perfect & Radiant Eventone 3 in 1 Cleanser Mattifying White Clay -->
+<div class="item">
+    <img src="men/body.l.men/Nivea.perfect&radiant.eventone.jpg" alt="Nivea Perfect & Radiant Eventone 3 in 1 Cleanser Mattifying White Clay 150ML">
+    <h3>Nivea Perfect & Radiant Eventone 3 in 1 Cleanser Mattifying White Clay 150ML</h3>
+    <p class="price">6000 CFA</p>
+    <p class="description">Un nettoyant 3-en-1 pour un teint parfait et uniforme, matifiant avec de l’argile blanche.</p>
+    <p class="brand">Marque : Nivea</p>
+    <button class="btn btn-primary add-to-cart" data-title="Nivea Perfect & Radiant Eventone 3 in 1 Cleanser Mattifying White Clay 150ML" data-price="6000">Ajouter au panier</button>
+</div>
+
+<!-- Nivea Men Body Lotion Deep Impact Normal Skin -->
+<div class="item">
+    <img src="men/body.l.men/Nivea.men.deep.impact.jpg" alt="Nivea Men Body Lotion Deep Impact Normal Skin 400ML">
+    <h3>Nivea Men Body Lotion Deep Impact Normal Skin 400ML</h3>
+    <p class="price">4500 CFA</p>
+    <p class="description">Une lotion pour le corps pour homme, offrant un impact profond et une hydratation pour la peau normale.</p>
+    <p class="brand">Marque : Nivea</p>
+    <button class="btn btn-primary add-to-cart" data-title="Nivea Men Body Lotion Deep Impact Normal Skin 400ML" data-price="4500">Ajouter au panier</button>
+</div>
+
+<!-- Nivea Men Maximum Hydration Normal to Dry Skin -->
+<div class="item">
+    <img src="men/body.l.men/Nivea.men.maximum.hydration.400.jpg" alt="Nivea Men Maximum Hydration Normal to Dry Skin 400ML">
+    <h3>Nivea Men Maximum Hydration Normal to Dry Skin 400ML</h3>
+    <p class="price">4500 CFA</p>
+    <p class="description">Une lotion pour le corps pour homme, offrant une hydratation maximale pour les peaux normales à sèches.</p>
+    <p class="brand">Marque : Nivea</p>
+    <button class="btn btn-primary add-to-cart" data-title="Nivea Men Maximum Hydration Normal to Dry Skin 400ML" data-price="4500">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Beauty.formula.H&N.cream.jpg" alt="Beauty Formulas Vitamina E Hand & Nail Cream 100ML">
+    <h3>Beauty Formulas Vitamina E Hand & Nail Cream 100ML</h3>
+    <p class="price">2500 FCFA</p>
+    <p class="description">Une crème pour les mains et les ongles enrichie en vitamine E, offrant hydratation et soin pour des mains douces et des ongles forts.</p>
+    <p class="brand">Marque : Beauty Formulas</p>
+    <button class="btn btn-primary add-to-cart" data-title="Beauty Formulas Vitamina E Hand & Nail Cream 100ML" data-price="2500">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Beauty.formula.australian.tea.tree.jpg" alt="Beauty Formulas Australian Tea Tree Skin Clarifying Blemish Gel 30ML">
+    <h3>Beauty Formulas Australian Tea Tree Skin Clarifying Blemish Gel 30ML</h3>
+    <p class="price">2500 FCFA</p>
+    <p class="description">Un gel clarifiant aux imperfections, à l’arbre à thé australien, aidant à purifier la peau et à réduire les imperfections.</p>
+    <p class="brand">Marque : Beauty Formulas</p>
+    <button class="btn btn-primary add-to-cart" data-title="Beauty Formulas Australian Tea Tree Skin Clarifying Blemish Gel 30ML" data-price="2500">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Beauty.formula.on.the.spot.treatment.jpg" alt="Beauty Formulas On-The-Spot Treatment Clear Skin 30ML">
+    <h3>Beauty Formulas On-The-Spot Treatment Clear Skin 30ML</h3>
+    <p class="price">2500 FCFA</p>
+    <p class="description">Un traitement localisé pour une peau claire, aidant à réduire les imperfections et à clarifier la peau.</p>
+    <p class="brand">Marque : Beauty Formulas</p>
+    <button class="btn btn-primary add-to-cart" data-title="Beauty Formulas On-The-Spot Treatment Clear Skin 30ML" data-price="2500">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Beauty.formula.charcoal.clay.M.jpg" alt="Beauty Formulas Charcoal Clay Mask 100ML">
+    <h3>Beauty Formulas Charcoal Clay Mask 100ML</h3>
+    <p class="price">3000 FCFA</p>
+    <p class="description">Un masque à l’argile de charbon, détoxifiant et purifiant la peau pour un teint frais et net.</p>
+    <p class="brand">Marque : Beauty Formulas</p>
+    <button class="btn btn-primary add-to-cart" data-title="Beauty Formulas Charcoal Clay Mask 100ML" data-price="3000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/beauty.formulas.tea.tree.facial.mask.jpg" alt="Beauty Formulas Australian Tea Tree Deep Cleansing Facial Mask 100ML">
+    <h3>Beauty Formulas Australian Tea Tree Deep Cleansing Facial Mask 100ML</h3>
+    <p class="price">3000 FCFA</p>
+    <p class="description">Un masque facial nettoyant en profondeur à l’arbre à thé australien, purifiant et clarifiant la peau.</p>
+    <p class="brand">Marque : Beauty Formulas</p>
+    <button class="btn btn-primary add-to-cart" data-title="Beauty Formulas Australian Tea Tree Deep Cleansing Facial Mask 100ML" data-price="3000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/beauty.formula.age.control.revitalising.night.cream.200ml.jpg" alt="Beauty Formulas Age Control Revitalising Night Cream 200ML">
+    <h3>Beauty Formulas Age Control Revitalising Night Cream 200ML</h3>
+    <p class="price">2000 FCFA</p>
+    <p class="description">Une crème de nuit revitalisante anti-âge, nourrissant la peau pendant la nuit pour une peau rajeunie et revitalisée.</p>
+    <p class="brand">Marque : Beauty Formulas</p>
+    <button class="btn btn-primary add-to-cart" data-title="Beauty Formulas Age Control Revitalising Night Cream 200ML" data-price="2000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/debbies.shea.butter.jpg" alt="Debbies Shea Butter Body Lotion for Healthy Skin 250ML">
+    <h3>Debbies Shea Butter Body Lotion for Healthy Skin 250ML</h3>
+    <p class="price">3000 FCFA</p>
+    <p class="description">Une lotion corporelle au beurre de karité, nourrissant et hydratant la peau pour une santé optimale.</p>
+    <p class="brand">Marque : Debbies</p>
+    <button class="btn btn-primary add-to-cart" data-title="Debbies Shea Butter Body Lotion for Healthy Skin 250ML" data-price="3000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Voi.SB&J.jpg" alt="Voi Pamper Yourself Body Lotion Shea Butter & Jasmine Extract 400ML">
+    <h3>Voi Pamper Yourself Body Lotion Shea Butter & Jasmine Extract 400ML</h3>
+    <p class="price">3000 FCFA</p>
+    <p class="description">Une lotion corporelle au beurre de karité et à l’extrait de jasmin, nourrissant et hydratant la peau.</p>
+    <p class="brand">Marque : Voi</p>
+    <button class="btn btn-primary add-to-cart" data-title="Voi Pamper Yourself Body Lotion Shea Butter & Jasmine Extract 400ML" data-price="3000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Voi.VOO.jpg" alt="Voi Pamper Yourself Body Lotion Virgin Olive Oil Extract 400ML">
+    <h3>Voi Pamper Yourself Body Lotion Virgin Olive Oil Extract 400ML</h3>
+    <p class="price">3000 FCFA</p>
+    <p class="description">Une lotion corporelle à l’extrait d’huile d’olive vierge, hydratant et nourrissant la peau.</p>
+    <p class="brand">Marque : Voi</p>
+    <button class="btn btn-primary add-to-cart" data-title="Voi Pamper Yourself Body Lotion Virgin Olive Oil Extract 400ML" data-price="3000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Voi.DSM.jpg" alt="Voi Pamper Yourself Body Lotion Dead Sea Minerals Extract 400ML">
+    <h3>Voi Pamper Yourself Body Lotion Dead Sea Minerals Extract 400ML</h3>
+    <p class="price">3000 FCFA</p>
+    <p class="description">Une lotion corporelle à l’extrait de minéraux de la Mer Morte, offrant une hydratation et une revitalisation.</p>
+    <p class="brand">Marque : Voi</p>
+    <button class="btn btn-primary add-to-cart" data-title="Voi Pamper Yourself Body Lotion Dead Sea Minerals Extract 400ML" data-price="3000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Monalisa.argan.oil.jpg" alt="Monalisa Glowing Body Cream Argan Oil 250ML">
+    <h3>Monalisa Glowing Body Cream Argan Oil 250ML</h3>
+    <p class="price">2000 FCFA</p>
+    <p class="description">Une crème corporelle illuminatrice à l’huile d’argan, offrant une hydratation pendant 48 heures pour une peau éclatante.</p>
+    <p class="brand">Marque : Monalisa</p>
+    <button class="btn btn-primary add-to-cart" data-title="Monalisa Glowing Body Cream Argan Oil 250ML" data-price="2000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Monalisa.olive.oil.jpg" alt="Monalisa Nourishing Body Cream Olive Oil 250ML">
+    <h3>Monalisa Nourishing Body Cream Olive Oil 250ML</h3>
+    <p class="price">2000 FCFA</p>
+    <p class="description">Une crème corporelle nourrissante à l’huile d’olive, offrant une hydratation pendant 48 heures pour une peau douce et nourrie.</p>
+    <p class="brand">Marque : Monalisa</p>
+    <button class="btn btn-primary add-to-cart" data-title="Monalisa Nourishing Body Cream Olive Oil 250ML" data-price="2000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/heaven.scent.body.cucumber.jpg" alt="Heaven Scent London Cucumber Body Crème 500ML">
+    <h3>Heaven Scent London Cucumber Body Crème 500ML</h3>
+    <p class="price">2500 FCFA</p>
+    <p class="description">Une crème corporelle au concombre, hydratante et rafraîchissante pour la peau.</p>
+    <p class="brand">Marque : Heaven Scent London</p>
+    <button class="btn btn-primary add-to-cart" data-title="Heaven Scent London Cucumber Body Crème 500ML" data-price="2500">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/heaven.scent.body.banana.jpg" alt="Heaven Scent London Banana Body Crème 500ML">
+    <h3>Heaven Scent London Banana Body Crème 500ML</h3>
+    <p class="price">2500 FCFA</p>
+    <p class="description">Une crème corporelle à la banane, hydratante et nourrissante pour la peau.</p>
+    <p class="brand">Marque : Heaven Scent London</p>
+    <button class="btn btn-primary add-to-cart" data-title="Heaven Scent London Banana Body Crème 500ML" data-price="2500">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/heaven.scent.body.avocado.jpg" alt="Heaven Scent London Avocado Body Crème 500ML">
+    <h3>Heaven Scent London Avocado Body Crème 500ML</h3>
+    <p class="price">2500 FCFA</p>
+    <p class="description">Une crème corporelle à l’avocat, hydratante et nourrissante pour la peau.</p>
+    <p class="brand">Marque : Heaven Scent London</p>
+    <button class="btn btn-primary add-to-cart" data-title="Heaven Scent London Avocado Body Crème 500ML" data-price="2500">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/heaven.scent.body.carrot.jpg" alt="Heaven Scent London Carrot Body Crème 500ML">
+    <h3>Heaven Scent London Carrot Body Crème 500ML</h3>
+    <p class="price">2500 FCFA</p>
+    <p class="description">Une crème corporelle à la carotte, hydratante et nourrissante pour la peau.</p>
+    <p class="brand">Marque : Heaven Scent London</p>
+    <button class="btn btn-primary add-to-cart" data-title="Heaven Scent London Carrot Body Crème 500ML" data-price="2500">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/heaven.scent.body.rose.jpg" alt="Heaven Scent London Rose Body Crème 500ML">
+    <h3>Heaven Scent London Rose Body Crème 500ML</h3>
+    <p class="price">2500 FCFA</p>
+    <p class="description">Une crème corporelle à la rose, hydratante et nourrissante pour la peau.</p>
+    <p class="brand">Marque : Heaven Scent London</p>
+    <button class="btn btn-primary add-to-cart" data-title="Heaven Scent London Rose Body Crème 500ML" data-price="2500">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/heaven.scent.body.vanilla.jpg" alt="Heaven Scent London Vanilla Crème 500ML">
+    <h3>Heaven Scent London Vanilla Crème 500ML</h3>
+    <p class="price">2500 FCFA</p>
+    <p class="description">Une crème corporelle à la vanille, hydratante et nourrissante pour la peau.</p>
+    <p class="brand">Marque : Heaven Scent London</p>
+    <button class="btn btn-primary add-to-cart" data-title="Heaven Scent London Vanilla Crème 500ML" data-price="2500">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Clere.cocoa.butter.jpg" alt="Clere Nourishing Body Crème for Radiant Glowing Skin 48h Cocoa Butter">
+    <h3>Clere Nourishing Body Crème for Radiant Glowing Skin 48h Cocoa Butter</h3>
+    <p class="price">3000 FCFA</p>
+    <p class="description">Une crème corporelle nourrissante pour une peau radieuse et éclatante pendant 48 heures, au beurre de cacao.</p>
+    <p class="brand">Marque : Clere</p>
+    <button class="btn btn-primary add-to-cart" data-title="Clere Nourishing Body Crème for Radiant Glowing Skin 48h Cocoa Butter" data-price="3000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Clere.avocado.milk.jpg" alt="Clere Rich Moisture Body Crème for Deeply Moisturised Skin 48h Avocado Milk">
+    <h3>Clere Rich Moisture Body Crème for Deeply Moisturised Skin 48h Avocado Milk</h3>
+    <p class="price">3000 FCFA</p>
+    <p class="description">Une crème corporelle riche en hydratation pour une peau profondément hydratée pendant 48 heures, au lait d’avocat.</p>
+    <p class="brand">Marque : Clere</p>
+    <button class="btn btn-primary add-to-cart" data-title="Clere Rich Moisture Body Crème for Deeply Moisturised Skin 48h Avocado Milk" data-price="3000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Ingrams.Camphor.Cream.Herbale.jpg" alt="Ingram’s The Skin Doctor Herbal Camphor Cream">
+    <h3>Ingram’s The Skin Doctor Herbal Camphor Cream</h3>
+    <p class="price">5000 FCFA</p>
+    <p class="description">Une crème à base de camphre et d’herbes, traitant et apaisant la peau.</p>
+    <p class="brand">Marque : Ingram’s</p>
+    <button class="btn btn-primary add-to-cart" data-title="Ingram’s The Skin Doctor Herbal Camphor Cream" data-price="5000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Ingrams.Camphor.Cream.Original.jpg" alt="Ingram’s The Skin Doctor Original Camphor Cream">
+    <h3>Ingram’s The Skin Doctor Original Camphor Cream</h3>
+    <p class="price">5000 FCFA</p>
+    <p class="description">Une crème originale au camphre, traitant et apaisant la peau.</p>
+    <p class="brand">Marque : Ingram’s</p>
+    <button class="btn btn-primary add-to-cart" data-title="Ingram’s The Skin Doctor Original Camphor Cream" data-price="5000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/nokware.shea.butter.jpg" alt="Nokware Shea Butter with Avocado & Almond Oil">
+    <h3>Nokware Shea Butter with Avocado & Almond Oil</h3>
+    <p class="price">7500 FCFA</p>
+    <p class="description">Du beurre de karité enrichi à l’huile d’avocat et d’amande, hydratant et nourrissant la peau.</p>
+    <p class="quantity">Quantité : 100 g</p>
+    <p class="brand">Marque : Nokware</p>
+    <button class="btn btn-primary add-to-cart" data-title="Nokware Shea Butter with Avocado & Almond Oil" data-price="7500">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Beauty.formula.brightening.vitamineC.scrub.jpg" alt="Brightening Vitamin C Facial Serum">
+    <h3>Brightening Vitamin C Facial Serum</h3>
+    <p class="price">3500 FCFA</p>
+    <p class="description">Un sérum facial à la vitamine C, éclaircissant et nourrissant la peau.</p>
+    <p class="quantity">Quantité : 30 ml</p>
+    <p class="brand">Marque : Beauty formulas</p>
+    <button class="btn btn-primary add-to-cart" data-title="Brightening Vitamin C Facial Serum" data-price="3500">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Beauty.formula.brightening.daily.moisturizer.jpg" alt="Brightening Vitamin C Daily Moisturising">
+    <h3>Brightening Vitamin C Daily Moisturising</h3>
+    <p class="price">3000 FCFA</p>
+    <p class="description">Une crème hydratante quotidienne à la vitamine C, éclaircissante et nourrissante la peau.</p>
+    <p class="quantity">Quantité : 150 ml</p>
+    <p class="brand">Marque : Beauty formulas</p>
+    <button class="btn btn-primary add-to-cart" data-title="Brightening Vitamin C Daily Moisturising" data-price="3000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Beauty.formula.brightening.facial.wash.jpg" alt="Brightening Vitamin C Daily Facial Wash">
+    <h3>Brightening Vitamin C Daily Facial Wash</h3>
+    <p class="price">3000 FCFA</p>
+    <p class="description">Un nettoyant facial quotidien à la vitamine C, éclaircissant et nettoyant la peau.</p>
+    <p class="quantity">Quantité : 150 ml</p>
+    <p class="brand">Marque : Beauty formulas</p>
+    <button class="btn btn-primary add-to-cart" data-title="Brightening Vitamin C Daily Facial Wash" data-price="3000">Ajouter au panier</button>
+</div>
+
+<div class="item">
+    <img src="men/body.l.men/Beauty.formula.brightening.facial.scrub.jpg" alt="Brightening Vitamin C Micro-Polishing Facial Scrub">
+    <h3>Brightening Vitamin C Micro-Polishing Facial Scrub</h3>
+    <p class="price">3000 FCFA</p>
+    <p class="description">Un gommage facial micro-polissant à la vitamine C, éclaircissant et exfoliant la peau.</p>
+    <p class="quantity">Quantité : 150 ml</p>
+    <p class="brand">Marque : Beauty formulas</p>
+    <button class="btn btn-primary add-to-cart" data-title="Brightening Vitamin C Micro-Polishing Facial Scrub" data-price="3000">Ajouter au panier</button>
+</div>
+
+        </div>
+    </section>
+
+    <section id="cart-section">
+        <h2>Panier</h2>
+        <div id="cart-items"></div>
+        <p class="cart-total">Total: <span id="cart-total">0</span> franc CFA</p>
+        <div class="referrer-selection">
+            <label for="referrer">Qui vous a parlé de ce site ?</label>
+            <select id="referrer" required>
+                <option value="">Sélectionnez un nom</option>
+                <option value="Amate">Amate</option>
+                <option value="Oumaima">Oumaima</option>
+                <option value="Alissa">Alissa</option>
+                <option value="Soraya">Soraya</option>
+                <option value="Hayat">Hayat</option>
+                <option value="Aïda">Aïda</option>
+                <option value="Asmah">Asmah</option>
+                <option value="Altiné">Altiné</option>
+                <option value="Bénédive">Bénédive</option>
+                <option value="Fadila">Fadila</option>
+                <option value="Imane">Imane</option>
+                <option value="Khaira">Khaira</option>
+                <option value="Mariam">Mariam</option>
+                <option value="Sira">Sira</option>
+                <option value="Tasnim">Tasnim</option>
+                <option value="Amina">Amina</option>
+                <option value="Malika">Malika</option>
+                <option value="Malika">Rahana</option>
+            </select>
+        </div>
+        <a href="#" id="checkout-button" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24">
+                <path fill="#00ffcc" d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/>
+            </svg>
+            Passez commande
+        </a>
+    </section>
+
+    <script src="js/script.js"></script>
+
+    <script>
+        const cart = [];
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+
+        function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <h6>${item.title}</h6>
+                    <input type="number" class="item-quantity" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)">
+                    <span class="item-remove" onclick="removeFromCart(${index})">&times;</span>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+                total += item.price * item.quantity;
+            });
+
+            cartTotal.innerText = total;
+        }
+
+        function addToCart(title, price) {
+            const existingItem = cart.find(item => item.title === title);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ title, price, quantity: 1 });
+            }
+
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateQuantity(index, quantity) {
+            cart[index].quantity = parseInt(quantity);
+            updateCart();
+        }
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const title = button.getAttribute('data-title');
+                const price = parseInt(button.getAttribute('data-price'));
+                addToCart(title, price);
+            });
+        });
+
+        function checkout() {
+            const cartDetails = cart.map(item => `${item.title} x${item.quantity}`).join(', ');
+            const total = cartTotal.innerText;
+
+            const emailBody = `Panier: ${cartDetails}\nTotal: ${total} CFA`;
+            const emailSubject = encodeURIComponent('Commande depuis le site Beauty Store');
+            const emailBodyEncoded = encodeURIComponent(emailBody);
+
+            window.location.href = `mailto:contact@beautystore.com?subject=${emailSubject}&body=${emailBodyEncoded}`;
+        }
+    </script>
+</body>
+</html>
